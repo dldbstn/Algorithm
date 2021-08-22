@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void merge(int A[], int p, int k, int q) {
+    int C[10];
+    int a = p, b = k + 1, c = p;
+
+    while (a <= k && b <= q) {
+        if (A[a] <= A[b]) {
+            C[c++] = A[a++];
+        }
+        else {
+            C[c++] = A[b++];
+        }
+    }
+
+    while (a <= k) {
+        C[c++] = A[a++];
+    }
+    while (b <= q) {
+        C[c++] = A[b++];
+    }
+
+    for (int i = p; i <= q; i++) {
+        A[i] = C[i];
+    }
+}
+
+void divide(int A[], int p, int q) {
+    int k;
+
+    if (p < q) {
+        k = (p + q) / 2;
+        divide(A, p, k);
+        divide(A, k + 1, q);
+        merge(A, p, k, q);
+    }
+}
+
+int main() {
+    int A[10];
+    int i, n;
+
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        A[i] = rand();
+    }
+
+    divide(A, 0, n - 1);
+
+    for (i = 0; i < n; i++) {
+        printf("%d ", A[i]);
+    }
+
+    return 0;
+}
