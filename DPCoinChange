@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+void CoinChange(int n) {
+	int i, j;
+	int C[20];
+	int D[5] = {0, 10, 5, 1 };
+
+	for (i = 0; i < n; i++) {
+		C[i] = 10000;
+	}
+
+	C[0] = 0;
+
+	for (j = 1; j <= n; j++) {
+		for (i = 1; i <= 3; i++) {
+			if (D[i] <= j && C[j - D[i]] + 1 < C[j]) {
+				C[j] = C[j - D[i]] + 1;
+			}
+		}
+	}
+
+	for (i = 0; i < n; i++) {
+		printf("%d ", C[i]);
+	}
+}
+
+int main()
+{
+	int n;
+
+	scanf("%d", &n);
+
+	CoinChange(n);
+
+	return 0;
+}
