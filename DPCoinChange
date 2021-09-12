@@ -1,9 +1,17 @@
 #include <stdio.h>
 
 void CoinChange(int n) {
-	int i, j;
+	int i, j, k;
 	int C[20];
-	int D[5] = {0, 10, 5, 1 };
+	int D[5];
+
+	printf("동전의 액면의 종류 개수 : ");
+	scanf("%d", &k);
+
+	printf("동전의 액면(높은 값 부터) : ");
+	for (i = 1; i <= k; i++) {
+		scanf("%d", &D[i]);
+	}
 
 	for (i = 0; i < n; i++) {
 		C[i] = 10000;
@@ -28,6 +36,7 @@ int main()
 {
 	int n;
 
+	printf("거스름돈 : ");
 	scanf("%d", &n);
 
 	CoinChange(n);
