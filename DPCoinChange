@@ -2,8 +2,8 @@
 
 void CoinChange(int n) {
 	int i, j, k;
-	int C[20];
-	int D[5];
+	int C[50];
+	int D[20];
 
 	printf("동전의 액면의 종류 개수 : ");
 	scanf("%d", &k);
